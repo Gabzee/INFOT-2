@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - FoodBuddy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a5f4f 0%, #2d8b6f 100%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        header {
+            background: #1a5f4f;
+            padding: 15px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: #fff; text-decoration: none; }
+
+        .back-btn {
+            background: #ffa500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cart-container { display: grid; grid-template-columns: 1fr 400px; gap: 30px; }
+
+        .cart-items {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .cart-title { font-size: 32px; color: #1a5f4f; margin-bottom: 30px; }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .item-image {
+            width: 100px;
+            height: 100px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #999;
+            object-fit: cover;
+        }
+
+        .item-details { flex: 1; }
+
+        .item-name { font-size: 20px; font-weight: bold; color: #333; margin-bottom: 5px; }
+
+        .item-description { font-size: 14px; color: #666; margin-bottom: 10px; }
+
+        .item-price { font-size: 18px; color: #1a5f4f; font-weight: bold; }
+
+        .item-controls { display: flex; flex-direction: column; gap: 15px; align-items: flex-end; }
+
+        .quantity-control { display: flex; gap: 10px; align-items: center; }
+
+        .qty-btn {
+            background: #1a5f4f;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .qty-btn:hover { background: #2d8b6f; }
+
+        .item-qty { font-weight: bold; font-size: 18px; min-width: 40px; text-align: center; }
+
+        .remove-btn {
+            background: #d4145a;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .remove-btn:hover { background: #b01048; }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-cart-icon { font-size: 80px; margin-bottom: 20px; }
+
+        .order-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-title { font-size: 24px; color: #1a5f4f; margin-bottom: 20px; }
+
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px; }
+
+        .summary-row.total {
+            border-top: 2px solid #1a5f4f;
+            padding-top: 15px;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a5f4f;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #ffa500;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover { background: #ff8c00; }
+        .checkout-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+        .continue-shopping {
+            width: 100%;
+            background: transparent;
+            color: #1a5f4f;
+            border: 2px solid #1a5f4f;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .continue-shopping:hover { background: #f0f0f0; }
+
+        @media (max-width: 768px) {
+            .cart-container { grid-template-columns: 1fr; }
+            .order-summary { position: static; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="index.html" class="logo">🍽️ FoodBuddy</a>
+            <a href="index.html" class="back-btn">← Continue Shopping</a>
+        </header>
+
+        <div class="cart-container">
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <h1 class="cart-title">Shopping Cart</h1>
+                <div id="cartItemsList"></div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2 class="summary-title">Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">₱0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee:</span>
+                    <span id="deliveryFee">₱50.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">₱0.00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn" onclick="goToCheckout()">Proceed to Checkout</button>
+                <button class="continue-shopping" onclick="window.location.href='index.html'">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get cart from localStorage
+        function getCart() {
+            const cartData = localStorage.getItem('foodBuddyCart');
+            return cartData ? JSON.parse(cartData) : [];
+        }
+
+        // Save cart to localStorage
+        function saveCart(cart) {
+            localStorage.setItem('foodBuddyCart', JSON.stringify(cart));
+        }
+
+        // Render cart items
+        function renderCart() {
+            const cart = getCart();
+            const cartItemsList = document.getElementById('cartItemsList');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h2>Your cart is empty</h2>
+                        <p>Add some delicious Filipino dishes to get started!</p>
+                    </div>
+                `;
+                checkoutBtn.disabled = true;
+            } else {
+                cartItemsList.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        ${item.image ? 
+                            `<img src="${item.image}" alt="${item.name}" class="item-image">` :
+                            `<div class="item-image">Image</div>`
+                        }
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-description">${item.description}</div>
+                            <div class="item-price">₱${item.price}.00 each</div>
+                        </div>
+                        <div class="item-controls">
+                            <div class="quantity-control">
+                                <button class="qty-btn" onclick="decreaseQty(${index})">−</button>
+                                <span class="item-qty">${item.quantity}</span>
+                                <button class="qty-btn" onclick="increaseQty(${index})">+</button>
+                            </div>
+                            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+                checkoutBtn.disabled = false;
+            }
+
+            updateSummary();
+            addClearCartButton(); // Add the Clear Cart button dynamically
+        }
+
+        // Update order summary
+        function updateSummary() {
+            const cart = getCart();
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = cart.length > 0 ? 50 : 0;
+            const total = subtotal + deliveryFee;
+
+            document.getElementById('subtotal').textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById('deliveryFee').textContent = `₱${deliveryFee.toFixed(2)}`;
+            document.getElementById('total').textContent = `₱${total.toFixed(2)}`;
+        }
+
+        // Increase quantity
+        function increaseQty(index) {
+            const cart = getCart();
+            cart[index].quantity++;
+            saveCart(cart);
+            renderCart();
+        }
+
+        // Decrease quantity
+        function decreaseQty(index) {
+            const cart = getCart();
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                saveCart(cart);
+                renderCart();
+            }
+        }
+
+        // Remove item
+        function removeItem(index) {
+            const cart = getCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+        }
+
+        // Clear entire cart
+        function clearCart() {
+            if (confirm("Are you sure you want to clear your cart?")) {
+                localStorage.removeItem('foodBuddyCart');
+                renderCart();
+            }
+        }
+
+        // Add "Clear Cart" button dynamically
+        function addClearCartButton() {
+            const cartItemsContainer = document.getElementById('cartItemsList');
+            if (!document.getElementById('clearCartBtn') && cartItemsContainer && getCart().length > 0) {
+                const clearBtn = document.createElement('button');
+                clearBtn.id = "clearCartBtn";
+                clearBtn.textContent = "Clear Cart";
+                clearBtn.className = "continue-shopping";
+                clearBtn.style.marginTop = "15px";
+                clearBtn.onclick = clearCart;
+                cartItemsContainer.appendChild(clearBtn);
+            }
+        }
+
+        // Go to checkout
+        function goToCheckout() {
+            window.location.href = 'checkout.html';
+        }
+
+        // Initialize
+        renderCart();
+    </script>
+</body>
+</html>

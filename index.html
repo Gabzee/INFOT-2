@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipino Kitchen - Food Delivery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a5f4f 0%, #2d8b6f 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: #1a5f4f;
+            padding: 15px 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 30px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: none;
+            font-size: 14px;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .cart-btn,
+        .user-btn,.Group-Member {
+            background: #ffa500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2d8b6f 0%, #1a5f4f 100%);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background: #ffa500;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .category-card {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 150px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Products Section */
+        .section-title {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .see-all {
+            color: #ffa500;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 120px;
+            height: 120px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #999;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+            min-height: 40px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #1a5f4f;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background: #1a5f4f;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart:hover {
+            background: #2d8b6f;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #8b1a4f 0%, #d4145a 100%);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .promo-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .promo-image {
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .app-btn {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .app-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">🍽️ FoodBuddy</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for Filipino dishes...">
+            </div>
+            <div class="user-actions">
+                <button class="Group-Member" onclick="goToGroup()">Group member</button>
+                <button class="cart-btn" onclick="goToCart()">🛒 Cart (0)</button>
+                <button onclick="logoutUser()">
+                    <img src="/infot2-img/logout.png" alt="Logout" width="24">
+                </button>
+            </div>
+        </header>
+
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Authentic Filipino Food<br>Delivered to Your Door</h1>
+                <p>Fresh, delicious, and made with love.<br>Order your favorite Filipino dishes now!</p>
+                <button class="cta-btn">Order Now</button>
+            </div>
+            <div class="hero-image">Image Placeholder</div>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-icon">Icon</div>
+                <div>Main Dishes</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">Icon</div>
+                <div>Appetizers</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">Icon</div>
+                <div>Soups</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">Icon</div>
+                <div>Desserts</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">Icon</div>
+                <div>Beverages</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">Icon</div>
+                <div>Street Food</div>
+            </div>
+        </div>
+
+        <!-- Best Sellers -->
+        <h2 class="section-title">
+            Weekly Best Sellers
+            <a href="#" class="see-all">See all →</a>
+        </h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="/infot2-img/adobo.png" alt="chicken adobo" class="product-image">
+                <div class="product-name">Adobo</div>
+                <div class="product-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
+                <div class="product-price">₱180<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="/infot2-img/sinigang.png" alt="pork sinigang" class="product-image">
+                <div class="product-name">Sinigang</div>
+                <div class="product-description">Sour tamarind soup with pork and vegetables</div>
+                <div class="product-price">₱220<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="/infot2-img/Lechon-Kawali.png" alt="Lechon-Kawali" class="product-image">
+                <div class="product-name">Lechon Kawali</div>
+                <div class="product-description">Crispy fried pork belly served with liver sauce</div>
+                <div class="product-price">₱250<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="/infot2-img/Kare-kare.png" alt="kare-kare" class="product-image">
+                <div class="product-name">Kare-Kare</div>
+                <div class="product-description">Oxtail stew in peanut sauce with vegetables</div>
+                <div class="product-price">₱280<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Image</div>
+                <div class="product-name">Pancit Canton</div>
+                <div class="product-description">Stir-fried noodles with vegetables and meat</div>
+                <div class="product-price">₱150<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+        </div>
+
+        <!-- Popular Dishes -->
+        <h2 class="section-title">
+            Popular Dishes
+            <a href="#" class="see-all">See all →</a>
+        </h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">Image</div>
+                <div class="product-name">Lumpia Shanghai</div>
+                <div class="product-description">Crispy spring rolls with ground pork filling</div>
+                <div class="product-price">₱120<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Image</div>
+                <div class="product-name">Sisig</div>
+                <div class="product-description">Sizzling pork dish with onions and chili</div>
+                <div class="product-price">₱200<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Image</div>
+                <div class="product-name">Halo-Halo</div>
+                <div class="product-description">Mixed shaved ice dessert with tropical fruits</div>
+                <div class="product-price">₱95<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Image</div>
+                <div class="product-name">Bulalo</div>
+                <div class="product-description">Beef shank soup with bone marrow and vegetables</div>
+                <div class="product-price">₱320<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Image</div>
+                <div class="product-name">Bicol Express</div>
+                <div class="product-description">Spicy pork cooked in coconut milk and chili</div>
+                <div class="product-price">₱195<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+        </div>
+
+        <!-- Promo Banner -->
+        <div class="promo-banner">
+            <div class="promo-content">
+                <h2>Stay Home and Get All<br>Your Favorite Filipino Food!</h2>
+                <p>Download our app for faster ordering and exclusive deals</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">📱 Google Play</a>
+                    <a href="#" class="app-btn">🍎 App Store</a>
+                </div>
+            </div>
+            <div class="promo-image">Image</div>
+        </div>
+    </div>
+
+    <script>
+        function logoutUser() {
+            if (confirm("Are you sure you want to log out?")) {
+                localStorage.removeItem('cartCount'); // or clear all
+                localStorage.removeItem('cart');
+                window.location.href = './login/Login.html';
+            }
+        }
+        function goToGroup(){
+            window.location.href = "./group-member/group.html";
+        }
+        // Function to navigate to cart page
+        function goToCart() {
+            window.location.href = 'cart-page.html';
+        }
+
+        // Initialize cart count from localStorage
+        let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+        const cartBtn = document.querySelector('.cart-btn');
+        cartBtn.textContent = `🛒 Cart (${cartCount})`;
+
+        // Add to cart functionality
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                cartCount++;
+                localStorage.setItem('cartCount', cartCount); // save count
+                cartBtn.textContent = `🛒 Cart (${cartCount})`;
+
+                // Animation
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Product card click
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('click', function () {
+                const productName = this.querySelector('.product-name').textContent;
+                alert(`Viewing details for: ${productName}`);
+            });
+        });
+
+        // Category click
+        const categoryCards = document.querySelectorAll('.category-card');
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function () {
+                const category = this.textContent.trim();
+                alert(`Browsing ${category}`);
+            });
+        });
+    </script>
+</body>
+
+</html>
