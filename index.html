@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filipino Kitchen - Food Delivery</title>
-    <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a5f4f 0%, #2d8b6f 100%);
+            background: #0B0B0B;
             min-height: 100vh;
         }
 
@@ -26,20 +26,21 @@
 
         /* Header */
         header {
-            background: #1a5f4f;
+            background: #0B0B0B;
             padding: 15px 30px;
             border-radius: 12px;
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid #39FF14;
         }
 
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: #fff;
+            color: #39FF14;
         }
 
         .search-bar {
@@ -52,8 +53,20 @@
             width: 100%;
             padding: 12px 20px;
             border-radius: 25px;
-            border: none;
+            border: 2px solid #1AFF00;
             font-size: 14px;
+            background: #0B0B0B;
+            color: #EDEDED;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #39FF14;
+        }
+
+        .search-bar input::placeholder {
+            color: #9CA3AF;
         }
 
         .user-actions {
@@ -63,67 +76,79 @@
         }
 
         .cart-btn,
-        .user-btn,.Group-Member {
-            background: #ffa500;
-            color: white;
+        .user-btn,
+        .Group-Member {
+            background: #39FF14;
+            color: #0B0B0B;
             border: none;
             padding: 10px 20px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .cart-btn:hover,
+        .user-btn:hover,
+        .Group-Member:hover {
+            background: #1AFF00;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #2d8b6f 0%, #1a5f4f 100%);
+            background: #0B0B0B;
             border-radius: 20px;
             padding: 60px;
             margin-bottom: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            color: #EDEDED;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 2px solid #39FF14;
         }
 
         .hero-content h1 {
             font-size: 42px;
             margin-bottom: 15px;
+            color: #39FF14;
         }
 
         .hero-content p {
             font-size: 18px;
             margin-bottom: 25px;
-            opacity: 0.9;
+            color: #EDEDED;
         }
 
         .cta-btn {
-            background: #ffa500;
-            color: white;
+            background: #39FF14;
+            color: #0B0B0B;
             border: none;
             padding: 15px 35px;
             border-radius: 25px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
         }
 
         .cta-btn:hover {
-            transform: scale(1.05);
+            background: #1AFF00;
+            transform: translateY(-2px);
         }
 
         .hero-image {
             width: 200px;
             height: 200px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(57, 255, 20, 0.05);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.5);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            color: #9CA3AF;
+            border: 2px dashed #39FF14;
         }
 
         /* Categories */
@@ -136,36 +161,44 @@
         }
 
         .category-card {
-            background: white;
+            background: #0B0B0B;
             padding: 20px 30px;
             border-radius: 15px;
             text-align: center;
             min-width: 150px;
             cursor: pointer;
-            transition: transform 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            border: 1px solid #39FF14;
         }
 
         .category-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(57, 255, 20, 0.2);
+            border-color: #1AFF00;
         }
 
         .category-icon {
             width: 60px;
             height: 60px;
-            background: #f0f0f0;
+            background: rgba(57, 255, 20, 0.1);
             border-radius: 10px;
             margin: 0 auto 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            color: #999;
+            color: #39FF14;
+            border: 1px solid #39FF14;
+        }
+
+        .category-card h3 {
+            color: #EDEDED;
         }
 
         /* Products Section */
         .section-title {
-            color: white;
+            color: #39FF14;
             font-size: 28px;
             margin-bottom: 20px;
             display: flex;
@@ -174,10 +207,15 @@
         }
 
         .see-all {
-            color: #ffa500;
+            color: #1AFF00;
             font-size: 16px;
             cursor: pointer;
             text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .see-all:hover {
+            color: #39FF14;
         }
 
         .products-grid {
@@ -188,99 +226,109 @@
         }
 
         .product-card {
-            background: white;
+            background: #0B0B0B;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            border: 1px solid #39FF14;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(57, 255, 20, 0.2);
+            border-color: #1AFF00;
         }
 
         .product-image {
             width: 120px;
             height: 120px;
-            background: #f0f0f0;
+            background: rgba(57, 255, 20, 0.05);
             border-radius: 10px;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 11px;
-            color: #999;
+            color: #9CA3AF;
+            border: 1px solid #39FF14;
         }
 
         .product-name {
             font-weight: bold;
             margin-bottom: 10px;
-            color: #333;
+            color: #EDEDED;
             font-size: 16px;
         }
 
         .product-description {
             font-size: 13px;
-            color: #666;
+            color: #9CA3AF;
             margin-bottom: 10px;
             min-height: 40px;
         }
 
         .product-price {
             font-size: 24px;
-            color: #1a5f4f;
+            color: #39FF14;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
         .add-to-cart {
-            background: #1a5f4f;
-            color: white;
+            background: #39FF14;
+            color: #0B0B0B;
             border: none;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             font-size: 20px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s;
         }
 
         .add-to-cart:hover {
-            background: #2d8b6f;
+            background: #1AFF00;
+            transform: scale(1.1);
         }
 
         /* Promo Banner */
         .promo-banner {
-            background: linear-gradient(135deg, #8b1a4f 0%, #d4145a 100%);
+            background: #0B0B0B;
             border-radius: 20px;
             padding: 40px;
-            color: white;
+            color: #EDEDED;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 40px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 2px solid #39FF14;
         }
 
         .promo-content h2 {
             font-size: 32px;
             margin-bottom: 15px;
+            color: #39FF14;
+        }
+
+        .promo-content p {
+            color: #EDEDED;
         }
 
         .promo-image {
             width: 150px;
             height: 150px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(57, 255, 20, 0.05);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.5);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            color: #9CA3AF;
+            border: 2px dashed #39FF14;
         }
 
         .app-buttons {
@@ -290,17 +338,19 @@
         }
 
         .app-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(57, 255, 20, 0.1);
             padding: 10px 20px;
             border-radius: 10px;
-            color: white;
+            color: #EDEDED;
             text-decoration: none;
             font-size: 14px;
-            transition: background 0.2s;
+            transition: all 0.3s;
+            border: 1px solid #1AFF00;
         }
 
         .app-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(26, 255, 0, 0.2);
+            border-color: #39FF14;
         }
     </style>
 </head>
@@ -370,7 +420,6 @@
             <div class="product-card">
 
                 <img src="infot2-img/adobo.png" alt="chicken adobo" class="product-image">
-
                 <div class="product-name">Adobo</div>
                 <div class="product-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
                 <div class="product-price">₱180<sup>.00</sup></div>
