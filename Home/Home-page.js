@@ -2,7 +2,7 @@ function logoutUser() {
   if (confirm("Are you sure you want to log out?")) {
     localStorage.removeItem("cartCount"); // or clear all
     localStorage.removeItem("cart");
-    window.location.href = "../login/index.html";
+    window.location.href = "../index.html";
   }
 }
 function goToGroup() {
@@ -10,7 +10,7 @@ function goToGroup() {
 }
 // Function to navigate to cart page
 function goToCart() {
-  window.location.href = "../cart-page.html";
+  window.location.href = "../cart/cart-page.html";
 }
 
 // Initialize cart count from localStorage
