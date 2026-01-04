@@ -2,7 +2,7 @@ function logoutUser() {
   if (confirm("Are you sure you want to log out?")) {
     localStorage.removeItem("cartCount"); // or clear all
     localStorage.removeItem("cart");
-    window.location.href = "../login/Login.html";
+    window.location.href = "../login/index.html";
   }
 }
 function goToGroup() {
