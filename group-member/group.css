@@ -1,75 +1,3 @@
-/* 
-form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    max-width: 800px;
-    width: 100%;
-}
-
-
-.Group-Member {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-
-.Group-Member h1 {
-    text-align: center;
-    color: #333;
-}
-
-
-.container, .container1, .container2 {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: #f0f0f0;
-    padding: 15px 20px;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid black;
-}
-
-
-.container:hover, .container1:hover, .container2:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-
-.container p, .container1 p, .container2 p {
-    font-weight: bold;
-    color: #555;
-    width: 150px;
-}
-
-.container img, .container1 img, .container2 img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-}
-
-
-.btn-show {
-    margin-left: auto;  pushes button to the right 
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.btn-show:hover {
-    background-color: #45a049;
-} */
 
 * {
     margin: 0;
@@ -79,7 +7,7 @@ form {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #333;
+    background: #0b0b0b;
     min-height: 100vh;
     padding: 40px 20px;
 }
@@ -99,7 +27,7 @@ form {
 
 .Group-Member h1 {
     text-align: center;
-    color: white;
+    color: #39ff14;
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -111,7 +39,7 @@ form {
 .container,
 .container1,
 .container2 {
-    background: white;
+    background: #9ca3af;
     border-radius: 20px;
     padding: 30px;
     width: 100%;
@@ -139,7 +67,7 @@ form {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #667eea;
+    border: 5px solid #37ff14a6;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
 }
@@ -154,33 +82,8 @@ form {
     text-align: left;
 }
 
-/* .btn-show {
-    background:#333;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(87, 100, 156, 0.4);
-    flex-shrink: 0;
-}
-
-.btn-show:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-}
-
-.btn-show:active {
-    transform: scale(0.98);
-} */
-
 .btn-back{
-    background: #fdfdfd;
+    background: #39ff14;
     color: #333;
     border: none;
     padding: 12px 30px;
@@ -196,11 +99,11 @@ form {
 }
 .btn-back,a{
     text-decoration: none;
-    color: #333;
+    color: #edededcb;
 }
 .btn-back:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    background: #39ff14;
+    transform: translateY(-2px);
 }
 .btn-back:active {
     transform: scale(0.98);

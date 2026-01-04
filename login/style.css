@@ -1,124 +1,124 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    width: 400px;
-    min-height: 400px;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 20px;
-    color: rgb(0, 0, 0);
-    align-items: center;
-    background-color: #ffffff;
-    border: none;
-    padding: 50px 40px;
-    gap: 15px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  width: 400px;
+  min-height: 400px;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  align-items: center;
+  background-color: #ffffff;
+  border: none;
+  padding: 50px 40px;
+  gap: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 label {
-    font-weight: bold;
-    font-size: 0.95em;
-    color: #333;
-    text-align: left;
-    width: 80%;
-    max-width: 300px;
-    margin-bottom: -10px;
+  font-weight: bold;
+  font-size: 0.95em;
+  color: #333;
+  text-align: left;
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: -10px;
 }
 
 input[type="text"],
 input[type="password"] {
-    height: 45px;
-    width: 80%;
-    max-width: 300px;
-    border-radius: 50px;
-    background-color: #f5f5f5;
-    border: 2px solid #e0e0e0;
-    color: black;
-    padding: 10px 20px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    border-color: #667eea;
+  height: 45px;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 50px;
+  background-color: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  color: black;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border-color: #667eea;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-    outline: none;
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  outline: none;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
 }
 
 input[type="text"]::placeholder,
 input[type="password"]::placeholder {
-    color: #999;
+  color: #999;
 }
 
 button {
-    border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #ffffff;
-    width: 150px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 15px;
-    transition: all 0.3s ease;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  width: 150px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
 }
 
 button:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .my_p1 {
-    font-size: 14px;
-    color: #555;
-    margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+  margin-top: 15px;
 }
 
 a {
-    text-decoration: none;
-    color: #667eea;
-    font-weight: bold;
-    transition: all 0.3s ease;
+  text-decoration: none;
+  color: #667eea;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 a:hover {
-    color: #764ba2;
-    text-decoration: underline;
+  color: #764ba2;
+  text-decoration: underline;
 }
 h1 {
-    color: #333;
-    font-size: 36px;
-    margin-bottom: 30px;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  color: #333;
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }

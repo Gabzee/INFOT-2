@@ -6,8 +6,8 @@ document.getElementById("Login").addEventListener("click", function() {
     let correctPass = "12345";
 
     if(email === correctEmail && password === correctPass) {
-        // Redirect to home page
-        window.location.href = "../index.html";
+        
+        window.location.href = "../Home/Home-page.html";
     } else {
         alert("incorrect email or password")
     }
