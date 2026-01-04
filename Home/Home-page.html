@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipino Kitchen - Food Delivery</title>
+    <link rel="stylesheet" href="Home-page.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">🍽️ FoodBuddy</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for Filipino dishes...">
+            </div>
+            <div class="user-actions">
+                <button class="Group-Member" onclick="goToGroup()">Group member</button>
+                <button class="cart-btn" onclick="goToCart()">🛒 Cart (0)</button>
+                <button onclick="logoutUser()">
+                    <img src="../infot2-img/logout1.png" alt="Logout" width="24">
+                </button>
+            </div>
+        </header>
+
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Authentic Filipino Food<br>Delivered to Your Door</h1>
+                <p>Fresh, delicious, and made with love.<br>Order your favorite Filipino dishes now!</p>
+                <button class="cta-btn">Order Now</button>
+            </div>
+            <img src="../infot2-img/FoodBuddy.png" class="hero-image">
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <div class="category-card">
+                <img src="../infot2-img/MainDish.png" alt="Main dish" class="category-icon">
+                <div>Main Dishes</div>
+            </div>
+            <div class="category-card">
+                <img src="../infot2-img/Appetizers.png" alt="Appetizers" class="category-icon">
+                <div>Appetizers</div>
+            </div>
+            <div class="category-card">
+                <img src="../infot2-img/Soups.png" alt="Soups" class="category-icon">
+                <div>Soups</div>
+            </div>
+            <div class="category-card">
+                <img src="../infot2-img/Desserts.png" alt="Desserts" class="category-icon">
+                <div>Desserts</div>
+            </div>
+            <div class="category-card">
+                <img src="../infot2-img/Beverages.png" alt="Beverages" class="category-icon">
+                <div>Beverages</div>
+            </div>
+            <div class="category-card">
+                <img src="../infot2-img/StreetFood.png" alt="Street Food" class="category-icon">
+                <div>Street Food</div>
+            </div>
+        </div>
+
+        <!-- Best Sellers -->
+        <h2 class="section-title">
+            Weekly Best Sellers
+            <a href="#" class="see-all">See all →</a>
+        </h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="../infot2-img/adobo.png" alt="chicken adobo" class="product-image">
+                <div class="product-name">Adobo</div>
+                <div class="product-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
+                <div class="product-price">₱180<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/sinigang.png" alt="pork sinigang" class="product-image">
+                <div class="product-name">Sinigang</div>
+                <div class="product-description">Sour tamarind soup with pork and vegetables</div>
+                <div class="product-price">₱220<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/Lechon-Kawali.png" alt="Lechon-Kawali" class="product-image">
+                <div class="product-name">Lechon Kawali</div>
+                <div class="product-description">Crispy fried pork belly served with liver sauce</div>
+                <div class="product-price">₱250<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/Kare-kare.png" alt="kare-kare" class="product-image">
+                <div class="product-name">Kare-Kare</div>
+                <div class="product-description">Oxtail stew in peanut sauce with vegetables</div>
+                <div class="product-price">₱280<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/pancit.png" alt="Pancit Canton" class="product-image">
+                <div class="product-name">Pancit Canton</div>
+                <div class="product-description">Stir-fried noodles with vegetables and meat</div>
+                <div class="product-price">₱150<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+        </div>
+
+        <!-- Popular Dishes -->
+        <h2 class="section-title">
+            Popular Dishes
+            <a href="#" class="see-all">See all →</a>
+        </h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="../infot2-img/lumpia.png" alt="Lumpia Shanghai" class="product-image">
+                <div class="product-name">Lumpia Shanghai</div>
+                <div class="product-description">Crispy spring rolls with ground pork filling</div>
+                <div class="product-price">₱120<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/sisig.png" alt="Sisig" class="product-image">
+                <div class="product-name">Sisig</div>
+                <div class="product-description">Sizzling pork dish with onions and chili</div>
+                <div class="product-price">₱200<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/Halo-halo.png" alt="Halo-Halo" class="product-image">
+                <div class="product-name">Halo-Halo</div>
+                <div class="product-description">Mixed shaved ice dessert with tropical fruits</div>
+                <div class="product-price">₱95<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/bulalo.png" alt="Bulalo" class="product-image">
+                <div class="product-name">Bulalo</div>
+                <div class="product-description">Beef shank soup with bone marrow and vegetables</div>
+                <div class="product-price">₱320<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+            <div class="product-card">
+                <img src="../infot2-img/BicolExpress.png" alt="Bicol Express" class="product-image">
+                <div class="product-name">Bicol Express</div>
+                <div class="product-description">Spicy pork cooked in coconut milk and chili</div>
+                <div class="product-price">₱195<sup>.00</sup></div>
+                <button class="add-to-cart">+</button>
+            </div>
+        </div>
+
+        <!-- Promo Banner -->
+        <div class="promo-banner">
+            <div class="promo-content">
+                <h2>Stay Home and Get All<br>Your Favorite Filipino Food!</h2>
+                <p>Download our app for faster ordering and exclusive deals</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">📱 Google Play</a>
+                    <a href="#" class="app-btn">🍎 App Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Home-page.js"></script>
+</body>
+</html>

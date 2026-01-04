@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - FoodBuddy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0B0B0B;
+            min-height: 100vh;
+            color: #EDEDED;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: #0B0B0B;
+            padding: 15px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid #39FF14;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #39FF14;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            background: #39FF14;
+            color: #0B0B0B;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #1AFF00;
+            transform: translateY(-2px);
+        }
+
+        /* Cart Container */
+        .cart-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Cart Items */
+        .cart-items {
+            background: #0B0B0B;
+            border: 1px solid #39FF14;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-title {
+            color: #39FF14;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #0B0B0B;
+            border: 1px solid #39FF14;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .cart-item:hover {
+            box-shadow: 0 4px 12px rgba(57, 255, 20, 0.2);
+            border-color: #1AFF00;
+        }
+
+        .item-image {
+            width: 100px;
+            height: 100px;
+            background: rgba(57, 255, 20, 0.05);
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid #39FF14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 12px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #EDEDED;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            font-size: 14px;
+            color: #9CA3AF;
+            margin-bottom: 10px;
+        }
+
+        .item-price {
+            font-size: 16px;
+            color: #39FF14;
+            font-weight: bold;
+        }
+
+        .item-controls {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(57, 255, 20, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #39FF14;
+        }
+
+        .qty-btn {
+            background: #39FF14;
+            color: #0B0B0B;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .qty-btn:hover {
+            background: #1AFF00;
+            transform: scale(1.1);
+        }
+
+        .item-qty {
+            font-size: 16px;
+            font-weight: bold;
+            color: #EDEDED;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            background: transparent;
+            color: #9CA3AF;
+            border: 1px solid #9CA3AF;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+
+        /* Empty Cart */
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-cart-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-cart h2 {
+            color: #EDEDED;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .empty-cart p {
+            color: #9CA3AF;
+            font-size: 16px;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: #0B0B0B;
+            border: 1px solid #39FF14;
+            border-radius: 15px;
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .summary-title {
+            color: #39FF14;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #EDEDED;
+        }
+
+        .summary-row.total {
+            border-top: 2px solid #39FF14;
+            padding-top: 15px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #39FF14;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #39FF14;
+            color: #0B0B0B;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover:not(:disabled) {
+            background: #1AFF00;
+            transform: translateY(-2px);
+        }
+
+        .checkout-btn:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .continue-shopping {
+            width: 100%;
+            background: transparent;
+            color: #39FF14;
+            border: 1px solid #39FF14;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .continue-shopping:hover {
+            background: rgba(57, 255, 20, 0.1);
+            border-color: #1AFF00;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="../Home/Home-page.html" class="logo">🍽️ FoodBuddy</a>
+            <a href="../Home/Home-page.html" class="back-btn">← Continue Shopping</a>
+        </header>
+
+        <div class="cart-container">
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <h1 class="cart-title">Shopping Cart</h1>
+                <div id="cartItemsList"></div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2 class="summary-title">Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">₱0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee:</span>
+                    <span id="deliveryFee">₱50.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">₱0.00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn" onclick="goToCheckout()">Proceed to Checkout</button>
+                <button class="continue-shopping" onclick="window.location.href='../Home/Home-page.html'">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+<script src="cart-page.js"></script>
+</body>
+</html>

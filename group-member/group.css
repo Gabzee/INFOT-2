@@ -1,0 +1,110 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0b0b0b;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+form {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.Group-Member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.Group-Member h1 {
+    text-align: center;
+    color: #39ff14;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.container,
+.container1,
+.container2 {
+    background: #9ca3af;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover,
+.container1:hover,
+.container2:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.container img,
+.container1 img,
+.container2 img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #37ff14a6;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.container p,
+.container1 p,
+.container2 p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+    text-align: left;
+}
+
+.btn-back{
+    background: #39ff14;
+    color: #333;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(87, 100, 156, 0.4);
+    flex-shrink: 0;
+}
+.btn-back,a{
+    text-decoration: none;
+    color: #edededcb;
+}
+.btn-back:hover {
+    background: #39ff14;
+    transform: translateY(-2px);
+}
+.btn-back:active {
+    transform: scale(0.98);
+}
