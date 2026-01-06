@@ -100,6 +100,25 @@ header {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   border: 2px solid #39ff14;
 }
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4BB543; /* Green for success */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 .hero-content h1 {
   font-size: 42px;

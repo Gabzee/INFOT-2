@@ -1,21 +1,40 @@
-// // =========================
-// Home-page.js
-// =========================
-
-// -------------------------
-// Logout function
-// -------------------------
 function logoutUser() {
   if (confirm("Are you sure you want to log out?")) {
+    // Clear user-related data from localStorage
+    localStorage.removeItem("foodBuddyCart"); // if you store cart
     localStorage.removeItem("cartCount");
-    localStorage.removeItem("cart");
+    localStorage.removeItem("loggedInUser"); // example key for logged-in user
+
+    // Redirect to login page
     window.location.href = "../index.html";
   }
 }
+function showNotification(message, duration = 2000) {
+  const notification = document.getElementById("notification");
+  notification.textContent = message;
+  notification.classList.add("show");
 
-// -------------------------
-// Navigation functions
-// -------------------------
+  setTimeout(() => {
+    notification.classList.remove("show");
+  }, duration);
+}
+
+function logoutUser() {
+  if (confirm("Are you sure you want to log out?")) {
+    // Clear user data
+    localStorage.removeItem("foodBuddyCart");
+    localStorage.removeItem("cartCount");
+    localStorage.removeItem("loggedInUser"); // example key
+
+    // Show notification
+    showNotification("Logged out successfully!", 1500);
+
+    // Redirect after notification
+    setTimeout(() => {
+      window.location.href = "../index.html";
+    }, 1500);
+  }
+}
 function goToGroup() {
   window.location.href = "../group-member/group.html";
 }
@@ -24,9 +43,6 @@ function goToCart() {
   window.location.href = "../cart/cart-page.html";
 }
 
-// -------------------------
-// Cart functions
-// -------------------------
 function getCart() {
   const savedCart = localStorage.getItem("cart");
   if (savedCart) {
@@ -56,24 +72,26 @@ function updateCartCount() {
   }
 }
 
-// -------------------------
-// Add to cart function
-// -------------------------
 function addToCart(productCard) {
   const name = productCard.querySelector(".product-name")?.textContent.trim();
-  const description = productCard.querySelector(".product-description")?.textContent.trim();
-  const priceText = productCard.querySelector(".product-price")?.textContent.trim();
+  const description = productCard
+    .querySelector(".product-description")
+    ?.textContent.trim();
+  const priceText = productCard
+    .querySelector(".product-price")
+    ?.textContent.trim();
   const image = productCard.querySelector(".product-image")?.src;
 
   // Parse price
   let price = 0;
   if (priceText) {
-    price = parseFloat(priceText.replace("₱", "").replace(",", "").replace(/\s/g, ""));
+    price = parseFloat(
+      priceText.replace("₱", "").replace(",", "").replace(/\s/g, "")
+    );
   }
 
   let cart = getCart();
 
-  // Check if product exists
   const existingIndex = cart.findIndex((item) => item.name === name);
 
   if (existingIndex > -1) {
@@ -85,7 +103,7 @@ function addToCart(productCard) {
       description: description || "",
       price: price,
       image: image || "",
-      quantity: 1
+      quantity: 1,
     });
   }
 
@@ -94,9 +112,6 @@ function addToCart(productCard) {
   console.log("Cart updated:", cart);
 }
 
-// -------------------------
-// Notification function
-// -------------------------
 function showNotification(message) {
   const existingNotification = document.querySelector(".cart-notification");
   if (existingNotification) existingNotification.remove();
@@ -125,9 +140,6 @@ function showNotification(message) {
   }, 2500);
 }
 
-// -------------------------
-// Add CSS animations
-// -------------------------
 const style = document.createElement("style");
 style.textContent = `
   @keyframes slideIn {
@@ -141,9 +153,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ==========================
-// DOMContentLoaded initialization
-// ==========================
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Home page script loaded");
 
@@ -152,14 +161,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const addToCartBtns = document.querySelectorAll(".add-to-cart");
   const searchInput = document.getElementById("search-input");
 
-  // -------------------------
-  // Initialize cart count
-  // -------------------------
   updateCartCount();
 
-  // -------------------------
-  // Add to cart button events
-  // -------------------------
   addToCartBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.stopPropagation(); // prevent card click
@@ -167,16 +170,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (productCard) {
         addToCart(productCard);
 
-        // Button click animation
         this.style.transform = "scale(1.2)";
-        setTimeout(() => { this.style.transform = "scale(1)"; }, 200);
+        setTimeout(() => {
+          this.style.transform = "scale(1)";
+        }, 200);
       }
     });
   });
 
-  // -------------------------
-  // Product card click
-  // -------------------------
   productCards.forEach((card) => {
     card.addEventListener("click", function (e) {
       if (e.target.classList.contains("add-to-cart")) return; // skip add-to-cart
@@ -185,47 +186,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // -------------------------
-  // Category filter
-  // -------------------------
   let selectedCategory = "all";
   categoryCards.forEach((card) => {
     card.addEventListener("click", function () {
       selectedCategory = this.dataset.category;
 
       // Highlight active category
-      categoryCards.forEach(c => c.classList.remove("active"));
+      categoryCards.forEach((c) => c.classList.remove("active"));
       this.classList.add("active");
 
       filterProducts();
     });
   });
 
-  // -------------------------
-  // Search filter
-  // -------------------------
   searchInput.addEventListener("input", function () {
     filterProducts();
   });
 
-  // -------------------------
-  // Combined filter function
-  // -------------------------
   function filterProducts() {
     const query = searchInput.value.toLowerCase().trim();
 
     productCards.forEach((product) => {
-      const name = product.querySelector(".product-name").textContent.toLowerCase();
-      const description = product.querySelector(".product-description").textContent.toLowerCase();
+      const name = product
+        .querySelector(".product-name")
+        .textContent.toLowerCase();
+      const description = product
+        .querySelector(".product-description")
+        .textContent.toLowerCase();
       const category = product.dataset.category || "all";
 
-      const matchesCategory = selectedCategory === "all" || category === selectedCategory;
+      const matchesCategory =
+        selectedCategory === "all" || category === selectedCategory;
       const matchesSearch = name.includes(query) || description.includes(query);
 
-      product.style.display = (matchesCategory && matchesSearch) ? "block" : "none";
+      product.style.display =
+        matchesCategory && matchesSearch ? "block" : "none";
     });
   }
 
-  // Initialize products on load
   filterProducts();
 });
