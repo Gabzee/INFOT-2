@@ -94,7 +94,6 @@ body {
   margin-top: 4px;
 }
 
-/* FORM ROW */
 .form-row {
   display: flex;
   gap: 10px;
@@ -122,7 +121,7 @@ body {
   margin-top: 3px;
 }
 
-/* BUTTON */
+
 .signup-btn {
   width: 100%;
   padding: 13px;
@@ -178,7 +177,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-/* RESPONSIVE */
+
 @media (max-width: 480px) {
   .form-row {
     flex-direction: column;

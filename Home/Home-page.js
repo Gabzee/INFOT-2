@@ -1,11 +1,11 @@
 function logoutUser() {
   if (confirm("Are you sure you want to log out?")) {
-    // Clear user-related data from localStorage
-    localStorage.removeItem("foodBuddyCart"); // if you store cart
+    
+    localStorage.removeItem("foodBuddyCart"); 
     localStorage.removeItem("cartCount");
-    localStorage.removeItem("loggedInUser"); // example key for logged-in user
+    localStorage.removeItem("loggedInUser");
 
-    // Redirect to login page
+    
     window.location.href = "../index.html";
   }
 }
@@ -21,18 +21,18 @@ function showNotification(message, duration = 2000) {
 
 function logoutUser() {
   if (confirm("Are you sure you want to log out?")) {
-    // Clear user data
+    
     localStorage.removeItem("foodBuddyCart");
     localStorage.removeItem("cartCount");
-    localStorage.removeItem("loggedInUser"); // example key
+    localStorage.removeItem("loggedInUser");
 
-    // Show notification
-    showNotification("Logged out successfully!", 1500);
+    
+    showNotification("Logged out successfully!", 600);
 
-    // Redirect after notification
+    
     setTimeout(() => {
       window.location.href = "../index.html";
-    }, 1500);
+    }, 1000);
   }
 }
 function goToGroup() {
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
     card.addEventListener("click", function () {
       selectedCategory = this.dataset.category;
 
-      // Highlight active category
+      
       categoryCards.forEach((c) => c.classList.remove("active"));
       this.classList.add("active");
 

@@ -1,4 +1,4 @@
-/* ================= General Reset ================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ body {
   padding: 20px;
 }
 
-/* ================= Header ================= */
+
 header {
   background: #0b0b0b;
   padding: 15px 30px;
@@ -55,7 +55,7 @@ header {
   transform: translateY(-2px);
 }
 
-/* ================= Checkout Container ================= */
+
 .checkout-container {
   display: grid;
   grid-template-columns: 1fr 400px;
@@ -71,7 +71,7 @@ header {
   border: 1px solid #39ff14;
 }
 
-/* ================= Form Sections ================= */
+
 .form-section h3 {
   font-size: 20px;
   color: #39ff14;

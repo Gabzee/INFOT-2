@@ -32,19 +32,19 @@ function handleSignup(event) {
     lastName,
     email,
     phone,
-    password, // Hash in production
+    password, 
     createdAt: new Date().toISOString(),
   };
 
   saveUser(user);
 
-  // Show notification
+  
   showSuccessMessage("Account created successfully!");
 
-  // Redirect after 2 seconds
+
   setTimeout(() => {
     window.location.href = "../Home/Home-page.html";
-  }, 2000);
+  }, 1500);
 }
 
 function validateForm(

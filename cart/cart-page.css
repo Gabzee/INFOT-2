@@ -17,7 +17,7 @@ body {
   padding: 20px;
 }
 
-/* Header */
+
 header {
   background: #0b0b0b;
   padding: 15px 30px;
@@ -52,7 +52,7 @@ header {
   transform: translateY(-2px);
 }
 
-/* Cart Container */
+
 .cart-container {
   display: grid;
   grid-template-columns: 1fr 400px;
@@ -60,7 +60,7 @@ header {
   margin-top: 20px;
 }
 
-/* Cart Items */
+
 .cart-items {
   background: #0b0b0b;
   border: 1px solid #39ff14;
@@ -240,7 +240,7 @@ header {
   transform: translateY(-2px);
 }
 
-/* Order Summary */
+
 .order-summary {
   background: #0b0b0b;
   border: 1px solid #39ff14;

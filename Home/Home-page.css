@@ -104,7 +104,7 @@ header {
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #4BB543; /* Green for success */
+    background-color: #4BB543; 
     color: white;
     padding: 15px 25px;
     border-radius: 8px;
@@ -162,7 +162,6 @@ header {
   border: 2px dashed #39ff14;
 }
 
-/* Categories */
 .categories {
   display: flex;
   gap: 15px;
@@ -208,7 +207,7 @@ header {
   color: #ededed;
 }
 
-/* Products Section */
+
 .section-title {
   color: #39ff14;
   font-size: 28px;
@@ -306,7 +305,6 @@ header {
   transform: scale(1.1);
 }
 
-/* Promo Banner */
 .promo-banner {
   background: #0b0b0b;
   border-radius: 20px;
