@@ -6,6 +6,29 @@ function logoutUser() {
     window.location.href = "../index.html";
   }
 }
+// CATEGORY FILTER SYSTEM
+const categoryCards = document.querySelectorAll(".category-card");
+const productCards = document.querySelectorAll(".product-card");
+
+categoryCards.forEach((card) => {
+  card.addEventListener("click", function () {
+    const selectedCategory = this.dataset.category;
+
+    // Active highlight
+    categoryCards.forEach((c) => c.classList.remove("active"));
+    this.classList.add("active");
+
+    productCards.forEach((product) => {
+      const productCategory = product.dataset.category;
+
+      if (selectedCategory === "all" || productCategory === selectedCategory) {
+        product.style.display = "block";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  });
+});
 
 // Navigate to group page
 function goToGroup() {
@@ -42,7 +65,7 @@ function updateCartCount() {
   const cart = getCart();
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   localStorage.setItem("cartCount", totalItems);
-  
+
   const cartBtn = document.querySelector(".cart-btn");
   if (cartBtn) {
     cartBtn.textContent = `🛒 Cart (${totalItems})`;
@@ -53,22 +76,28 @@ function updateCartCount() {
 function addToCart(productCard) {
   // Extract product information
   const name = productCard.querySelector(".product-name")?.textContent.trim();
-  const description = productCard.querySelector(".product-description")?.textContent.trim();
-  const priceText = productCard.querySelector(".product-price")?.textContent.trim();
+  const description = productCard
+    .querySelector(".product-description")
+    ?.textContent.trim();
+  const priceText = productCard
+    .querySelector(".product-price")
+    ?.textContent.trim();
   const image = productCard.querySelector(".product-image")?.src;
-  
+
   // Parse price
   let price = 0;
   if (priceText) {
-    price = parseFloat(priceText.replace("₱", "").replace(",", "").replace(/\s/g, ""));
+    price = parseFloat(
+      priceText.replace("₱", "").replace(",", "").replace(/\s/g, "")
+    );
   }
-  
+
   // Get current cart
   let cart = getCart();
-  
+
   // Check if item already exists
-  const existingItemIndex = cart.findIndex(item => item.name === name);
-  
+  const existingItemIndex = cart.findIndex((item) => item.name === name);
+
   if (existingItemIndex > -1) {
     // Item exists, increase quantity
     cart[existingItemIndex].quantity += 1;
@@ -80,16 +109,16 @@ function addToCart(productCard) {
       price: price,
       image: image || "",
       description: description || "",
-      quantity: 1
+      quantity: 1,
     });
   }
-  
+
   // Save cart
   saveCart(cart);
-  
+
   // Show notification
   showNotification(`${name} added to cart!`);
-  
+
   console.log("Cart updated:", cart);
 }
 
@@ -100,7 +129,7 @@ function showNotification(message) {
   if (existingNotification) {
     existingNotification.remove();
   }
-  
+
   const notification = document.createElement("div");
   notification.className = "cart-notification";
   notification.textContent = message;
@@ -117,9 +146,9 @@ function showNotification(message) {
     font-weight: 600;
     animation: slideIn 0.3s ease-out;
   `;
-  
+
   document.body.appendChild(notification);
-  
+
   setTimeout(() => {
     notification.style.animation = "slideOut 0.3s ease-out";
     setTimeout(() => notification.remove(), 300);
@@ -154,27 +183,27 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Initialize on page load
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   console.log("Initializing cart system...");
-  
+
   // Update cart count on page load
   updateCartCount();
-  
+
   // Add to cart functionality
   const addToCartBtns = document.querySelectorAll(".add-to-cart");
   console.log("Found", addToCartBtns.length, "add-to-cart buttons");
-  
+
   addToCartBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.stopPropagation(); // Prevent card click event
-      
+
       // Find parent product card
       const productCard = this.closest(".product-card");
-      
+
       if (productCard) {
         // Add to cart
         addToCart(productCard);
-        
+
         // Button animation
         this.style.transform = "scale(1.2)";
         setTimeout(() => {
@@ -185,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
-  
+
   // Product card click (view details)
   const productCards = document.querySelectorAll(".product-card");
   productCards.forEach((card) => {
@@ -194,12 +223,12 @@ document.addEventListener("DOMContentLoaded", function() {
       if (e.target.classList.contains("add-to-cart")) {
         return;
       }
-      
+
       const productName = this.querySelector(".product-name").textContent;
       alert(`Viewing details for: ${productName}`);
     });
   });
-  
+
   // Category click
   const categoryCards = document.querySelectorAll(".category-card");
   categoryCards.forEach((card) => {

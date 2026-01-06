@@ -38,38 +38,45 @@
 
         <!-- Categories -->
         <div class="categories">
-            <div class="category-card">
-                <img src="../infot2-img/MainDish.png" alt="Main dish" class="category-icon">
+            <div class="category-card" data-category="all">
+                <img src="../infot2-img/AllMenu.png" alt="All Mene" class="category-icon">
+                <div>All Menu</div>
+            </div>
+            <div class="category-card" data-category="main">
+                <img src="../infot2-img/MainDish.png" class="category-icon">
                 <div>Main Dishes</div>
             </div>
-            <div class="category-card">
-                <img src="../infot2-img/Appetizers.png" alt="Appetizers" class="category-icon">
+
+            <div class="category-card" data-category="appetizer">
+                <img src="../infot2-img/Appetizers.png" class="category-icon">
                 <div>Appetizers</div>
             </div>
-            <div class="category-card">
-                <img src="../infot2-img/Soups.png" alt="Soups" class="category-icon">
+
+            <div class="category-card" data-category="soup">
+                <img src="../infot2-img/Soups.png" class="category-icon">
                 <div>Soups</div>
             </div>
-            <div class="category-card">
-                <img src="../infot2-img/Desserts.png" alt="Desserts" class="category-icon">
+
+            <div class="category-card" data-category="dessert">
+                <img src="../infot2-img/Desserts.png" class="category-icon">
                 <div>Desserts</div>
             </div>
-            <div class="category-card">
-                <img src="../infot2-img/Beverages.png" alt="Beverages" class="category-icon">
-                <div>Beverages</div>
-            </div>
-            <div class="category-card">
-                <img src="../infot2-img/StreetFood.png" alt="Street Food" class="category-icon">
-                <div>Street Food</div>
-            </div>
+
         </div>
 
         <!-- Best Sellers -->
         <h2 class="section-title">
             Weekly Best Sellers
-            <a href="#" class="see-all">See all →</a>
+
         </h2>
-        <div class="products-grid">
+        <div class="products-grid" data-category="main">
+            <div class="product-card" data-category="soup">
+                <img src="../group-member/pictures/adanjing.jpeg" alt="Bicol Express" class="product-image">
+                <div class="product-name">masarap</div>
+                <div class="product-description">juicy </div>
+                <div class="product-price">Libre pag ako kakain</div>
+                <button class="add-to-cart">+</button>
+            </div>
             <div class="product-card">
                 <img src="../infot2-img/adobo.png" alt="chicken adobo" class="product-image">
                 <div class="product-name">Adobo</div>
@@ -77,28 +84,28 @@
                 <div class="product-price">₱180<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="soup">
                 <img src="../infot2-img/sinigang.png" alt="pork sinigang" class="product-image">
                 <div class="product-name">Sinigang</div>
                 <div class="product-description">Sour tamarind soup with pork and vegetables</div>
                 <div class="product-price">₱220<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="main">
                 <img src="../infot2-img/Lechon-Kawali.png" alt="Lechon-Kawali" class="product-image">
                 <div class="product-name">Lechon Kawali</div>
                 <div class="product-description">Crispy fried pork belly served with liver sauce</div>
                 <div class="product-price">₱250<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="main">
                 <img src="../infot2-img/Kare-kare.png" alt="kare-kare" class="product-image">
                 <div class="product-name">Kare-Kare</div>
                 <div class="product-description">Oxtail stew in peanut sauce with vegetables</div>
                 <div class="product-price">₱280<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="main">
                 <img src="../infot2-img/pancit.png" alt="Pancit Canton" class="product-image">
                 <div class="product-name">Pancit Canton</div>
                 <div class="product-description">Stir-fried noodles with vegetables and meat</div>
@@ -110,38 +117,37 @@
         <!-- Popular Dishes -->
         <h2 class="section-title">
             Popular Dishes
-            <a href="#" class="see-all">See all →</a>
         </h2>
         <div class="products-grid">
-            <div class="product-card">
+            <div class="product-card" data-category="appetizer">
                 <img src="../infot2-img/lumpia.png" alt="Lumpia Shanghai" class="product-image">
                 <div class="product-name">Lumpia Shanghai</div>
                 <div class="product-description">Crispy spring rolls with ground pork filling</div>
                 <div class="product-price">₱120<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="main">
                 <img src="../infot2-img/sisig.png" alt="Sisig" class="product-image">
                 <div class="product-name">Sisig</div>
                 <div class="product-description">Sizzling pork dish with onions and chili</div>
                 <div class="product-price">₱200<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="dessert">
                 <img src="../infot2-img/Halo-halo.png" alt="Halo-Halo" class="product-image">
                 <div class="product-name">Halo-Halo</div>
                 <div class="product-description">Mixed shaved ice dessert with tropical fruits</div>
                 <div class="product-price">₱95<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="soup">
                 <img src="../infot2-img/bulalo.png" alt="Bulalo" class="product-image">
                 <div class="product-name">Bulalo</div>
                 <div class="product-description">Beef shank soup with bone marrow and vegetables</div>
                 <div class="product-price">₱320<sup>.00</sup></div>
                 <button class="add-to-cart">+</button>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-category="soup">
                 <img src="../infot2-img/BicolExpress.png" alt="Bicol Express" class="product-image">
                 <div class="product-name">Bicol Express</div>
                 <div class="product-description">Spicy pork cooked in coconut milk and chili</div>
@@ -165,4 +171,5 @@
 
     <script src="Home-page.js"></script>
 </body>
+
 </html>
